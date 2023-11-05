@@ -1,0 +1,23 @@
+function validateForm(email, password) {
+    if (email === "") {
+      alert("Please enter your email.");
+    } else if (password.length < 6) {
+      alert("Your password should be at least 6 characters long.");
+    } else {
+      alert("Success");
+    }
+  }
+  
+function togglePasswordVisibility(passwordInput) {
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+  
+    } else {
+      passwordInput.type = "password";
+  
+    }
+  
+  
+  }
+  
+  
