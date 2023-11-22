@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,82 +26,118 @@
   <script src="form.js"></script>
   <title>Sign in</title>
 </head>
+
 <body class="bg-image"
   style="background-image: url(https://img.freepik.com/premium-vector/hand-drawn-cupcake-doodle-background-seamless-pattern_217204-180.jpg?w=2000);">
   <div style="background-color: #F7F4ED;">
     <div class="container-fluid">
       <div class="row justify-content-center align-items-center ">
         <div class="col-sm-6">
-          <a href="C:\Users\hanal\.vscode\web_tech11\ass\bakery.html">
-            <img src="C:\Users\hanal\.vscode\web_tech11\bakery_img\Our icon.png" alt="" width="90%">
+          <a href="index.html">
+            <img src="photo/Our icon.png" alt="" width="90%">
           </a>
         </div>
       </div>
     </div>
   </div>
   <div class="container border mt-5 " style="background-color: #F7F4ED; width:50%">
-    <h2 class="mt-2 text-center">Sign in</h2>
+    <br>
+    <h2 class="mt-2 text-center">Sign up</h2>
+
+    <div class="container-fluid">
+      <p class="mt-4 ml-4 text-end">Did you have an account? <a href="forms.html">Sign in</a> here</p>
+    </div>
     <form id="registrationForm" action="/action_page.php">
-        <div class="form-group mt-4">
-            <div class="input-group">
-                <input type="email" class="form-control text-center" id="email" placeholder="Enter email" name="email">
-            </div>
+      <div class="form-group mt-4">
+        <div class="input-group">
+          <input type="name" class="form-control text-center" id="name" placeholder="Enter your name" name="name" required>
         </div>
-        <div class="form-group mt-4">
-          <div class="input-group">
-              <input type="password" class="form-control text-center" id="pwd" placeholder="Enter password" name="password">
-              <div class="input-group-append mt-5">
-                  <div class="mt-4 text-end" type="button" onclick="togglePasswordVisibility(document.getElementById('pwd'))">Hide Password</div>
-              </div>
+      </div>
+      <div class="form-group mt-4">
+        <div class="input-group">
+          <input type="surname" class="form-control text-center" id="surname" placeholder="Enter your surname" name="surname" required>
+        </div>
+      </div>
+      <div class="form-group mt-4">
+        <div class="input-group">
+          <input type="email" class="form-control text-center" id="email" placeholder="Enter email" name="email" required>
+        </div>
+      </div>
+      <div class="form-group mt-4">
+        <div class="input-group">
+          <input type="date" class="form-control text-center" id="birthdate" placeholder="Enter date of birth" name="birthdate" required>
+        </div>
+      </div>
+      <div class="form-group mt-4">
+        <div class="input-group">
+          <input type="password" class="form-control text-center" id="pwd" placeholder="Enter password" name="password" required>
+          <div class="input-group-append mt-5">
+            <div class="mt-4 text-end" type="button" onclick="togglePasswordVisibility(document.getElementById('pwd'))">
+              Hide Password</div>
           </div>
+        </div>
       </div>
       <div class="text-muted mt-2 ml-4">Password must include at least one:</div>
       <ul id="password-requirements" class="ml-4 pl-0">
-        <li>One lowercase character</li>
-        <li>One uppercase character</li>
-        <li>One special character (@, %, $, etc.)</li>
+        <li id="lowercase-req">One lowercase character</li>
+        <li id="uppercase-req">One uppercase character</li>
+        <li id="specialchar-req">One special character (@, %, $, etc.)</li>
       </ul>
       <div class="text-center"><button class="btn btn-dark mt-2">Submit</button></div>
       <ul class="pager">
-          <li class="text-center"><a href="C:\Users\hanal\.vscode\web_tech11\ass\bakery.html">Home</a></li>
+        <li class="text-center"><a href="index.html">Home</a></li>
       </ul>
     </form>
   </div>
-<script>
-  const passwordInput = document.getElementById("pwd");
-  const passwordRequirements = document.getElementById("password-requirements");
+  <script>
 
-  passwordInput.addEventListener("input", () => {
-    const value = passwordInput.value;
+document.getElementById('registrationForm').addEventListener('submit', function (event) {
+  event.preventDefault();
 
-    const containsLowercase = /[a-z]/.test(value);
-    const containsUppercase = /[A-Z]/.test(value);
-    const containsSpecialCharacter = /[!@#\$%\^&\*]/.test(value);
+  const name = document.getElementById('name').value;
+  const surname = document.getElementById('surname').value;
+  const email = document.getElementById('email').value;
+  const birthdate = document.getElementById('birthdate').value;
+  const password = document.getElementById('pwd').value;
 
-    const requirementsList = [
-      { text: "One lowercase character", fulfilled: containsLowercase },
-      { text: "One uppercase character", fulfilled: containsUppercase },
-      { text: "One special character (@, %, $, etc.)", fulfilled: containsSpecialCharacter },
-    ];
+  const lowercaseReq = document.getElementById('lowercase-req');
+  const uppercaseReq = document.getElementById('uppercase-req');
+  const specialcharReq = document.getElementById('specialchar-req');
 
-    passwordRequirements.innerHTML = requirementsList
-      .map((requirement) => `<li style="color: ${requirement.fulfilled ? 'green' : 'black'}">${requirement.text}</li>`)
-      .join("");
-  });
+  const userAccounts = JSON.parse(localStorage.getItem('userAccounts')) || [];
+  let isValid = true;
 
-  document.getElementById('registrationForm').addEventListener('submit', function(event) {
-    event.preventDefault();
+  if (!/[a-z]/.test(password)) {
+    isValid = false;
+    lowercaseReq.style.color = 'red';
+  } else {
+    lowercaseReq.style.color = 'green';
+  }
 
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('pwd').value;
+  if (!/[A-Z]/.test(password)) {
+    isValid = false;
+    uppercaseReq.style.color = 'red';
+  } else {
+    uppercaseReq.style.color = 'green';
+  }
 
-    const userAccounts = JSON.parse(localStorage.getItem('userAccounts')) || [];
-    userAccounts.push({ email, password });
+  if (!/[@%$]/.test(password)) {
+    isValid = false;
+    specialcharReq.style.color = 'red';
+  } else {
+    specialcharReq.style.color = 'green';
+  }
 
+  if (isValid) {
+    userAccounts.push({ name, surname, email, birthdate, password });
     localStorage.setItem('userAccounts', JSON.stringify(userAccounts));
-
     alert('Registration successful!');
-  });
-</script>
+  }
+});
+
+    
+  </script>
+  
 </body>
+
 </html>
