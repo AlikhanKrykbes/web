@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+form html <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -26,35 +26,10 @@
     type='text/css'>
   <link href="https://fonts.googleapis.com/css?family=Marck+Script" rel="stylesheet">
   <title>Form</title>
-  <script src="C:\Users\hanal\.vscode\web_tech11\ass\form.js"></script>
-
-  <script>
-    function togglePasswordVisibility(passwordInput) {
-  if (passwordInput.type === "password") {
-    passwordInput.type = "text";
-
-  } else {
-    passwordInput.type = "password";
-
-  }
+  <script src="form.js"></script>
 
 
-}
-document.getElementById('registrationForm').addEventListener('submit', function(event) {
-    event.preventDefault();
 
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('pwd').value;
-
-    const userAccounts = JSON.parse(localStorage.getItem('userAccounts')) || [];
-    userAccounts.push({ email, password });
-
-    localStorage.setItem('userAccounts', JSON.stringify(userAccounts));
-
-    alert('Registration successful!');
-  });
-  </script>
-  
 </head>
 
 <body class="bg-image"
@@ -64,8 +39,8 @@ document.getElementById('registrationForm').addEventListener('submit', function(
     <div class="container-fluid">
       <div class="row justify-content-center align-items-center ">
         <div class="col-sm-6">
-          <a href="C:\Users\hanal\.vscode\web_tech11\ass\bakery.html"><img src="C:\Users\hanal\.vscode\web_tech11\bakery_img\Our icon.png" alt=""
-              width="90%"></a>
+          <a href="C:\Users\hanal\.vscode\web_tech11\ass\bakery.html"><img
+              src="C:\Users\hanal\.vscode\web_tech11\bakery_img\Our icon.png" alt="" width="90%"></a>
         </div>
       </div>
     </div>
@@ -73,44 +48,41 @@ document.getElementById('registrationForm').addEventListener('submit', function(
   <!-- form -->
   <div class="container border mt-5 " style="background-color: #F7F4ED; width:50%">
     <div>
-    <form action="/action_page.php" onsubmit="validateForm(this.email.value, this.pwd.value); return false;">
-      <h2 class="mt-2 text-center">Login</h2>  
-      <div class="form-group mt-4">
-            <div class="input-group">
-              
-              <div class="container-fluid">
-                
-                <p class="mt-4 ml-4 text-end">Don't have an account? <a href="C:\Users\hanal\.vscode\web_tech11\ass\sign_up.html">Sign in</a> here</p>
-              
+      <form action="admin.html" onsubmit="validateForm(this.email.value, this.pwd.value); return false;">
+        <h2 class="mt-2 text-center">Login</h2>
+        <div class="form-group mt-4">
+          <div class="input-group">
+
+            <div class="container-fluid">
+
+              <p class="mt-4 ml-4 text-end">Don't have an account? <a
+                  href="C:\Users\hanal\.vscode\web_tech11\ass\sign_up.html">Sign in</a> here</p>
+
             </div>
-                <input type="email" class="form-control text-center" id="email" placeholder="Enter email" name="email">
-            </div>
-           
+            <input type="email" class="form-control text-center" id="email" placeholder="Enter email" name="email">
+          </div>
+
         </div>
         <div class="form-group mt-4">
           <div class="input-group">
-              <input type="password" class="form-control text-center" id="pwd" placeholder="Enter password" name="pwd">
-              <div class="input-group-append mt-5">
-                  <div class="mt-4 text-end" type="button" onclick="togglePasswordVisibility(document.getElementById('pwd'))">Hide Password</div>
-              </div>
+            <input type="password" class="form-control text-center" id="pwd" placeholder="Enter password" name="pwd">
+            <div class="input-group-append mt-5">
+              <div class="mt-4 text-end" type="button"
+                onclick="togglePasswordVisibility(document.getElementById('pwd'))">Hide Password</div>
+            </div>
           </div>
-      </div>
-      <div class="text-center"><button class="btn btn-dark mt-2">Submit</button></div>     
+        </div>
+        <div class="text-center"><button class="btn btn-dark mt-2">Submit</button></div>
         <ul class="pager">
-            <li class="text-center"><a href="C:\Users\hanal\.vscode\web_tech11\ass\bakery.html">Home</a></li>
+          <li class="text-center"><a href="bakery.html">Home</a></li>
         </ul>
-    </form>
-    
+      </form>
+
+    </div>
+
   </div>
 
-</div>
-
+  
 </body>
 
 </html>
-
-</body>
-
-</html>
-
-
